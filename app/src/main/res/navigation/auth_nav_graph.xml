@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.aegisai.ui.auth.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_registerStep1Fragment"
+            app:destination="@id/registerStep1Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerStep1Fragment"
+        android:name="com.example.aegisai.ui.auth.RegisterStep1Fragment"
+        android:label="Register"
+        tools:layout="@layout/fragment_register_step1">
+        <action
+            android:id="@+id/action_registerStep1Fragment_to_registerStep2OtpFragment"
+            app:destination="@id/registerStep2OtpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerStep2OtpFragment"
+        android:name="com.example.aegisai.ui.auth.RegisterStep2OtpFragment"
+        android:label="Verify OTP"
+        tools:layout="@layout/fragment_register_step2_otp">
+        <action
+            android:id="@+id/action_registerStep2OtpFragment_to_registerStep3DetailsFragment"
+            app:destination="@id/registerStep3DetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerStep3DetailsFragment"
+        android:name="com.example.aegisai.ui.auth.RegisterStep3DetailsFragment"
+        android:label="Final Details"
+        tools:layout="@layout/fragment_register_step3_details" />
+</navigation>
