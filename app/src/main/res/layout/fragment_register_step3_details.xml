@@ -1,177 +1,205 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    android:fillViewport="true"
+    tools:context=".ui.auth.RegisterStep3DetailsFragment">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:padding="24dp">
 
         <TextView
+            android:id="@+id/title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:text="Final Details"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+            android:textColor="@android:color/white"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Vehicle Details -->
         <TextView
+            android:id="@+id/subtitle_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Vehicle Details"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+            android:layout_marginTop="4dp"
+            android:text="Secure your account with this information"
+            android:textColor="#D0FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_text" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Make (e.g., Maruti Suzuki)">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/make_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Model (e.g., Swift)">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/model_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Year">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/year_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="License Plate">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/license_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Insurance Details -->
+        <!-- Vehicle Details Group -->
         <TextView
+            android:id="@+id/vehicle_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Vehicle Details"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/subtitle_text" />
+
+        <!-- Make Input -->
+        <LinearLayout
+            android:id="@+id/make_input_layout"
+            style="@style/AuthInputLayout"
+            app:layout_constraintTop_toBottomOf="@id/vehicle_header"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <ImageView style="@style/AuthInputIcon" android:src="@drawable/ic_car_24" />
+            <EditText android:id="@+id/make_edit_text" style="@style/AuthEditText" android:hint="Make (e.g., Maruti Suzuki)" />
+        </LinearLayout>
+        <!-- Model Input -->
+        <LinearLayout
+            android:id="@+id/model_input_layout"
+            style="@style/AuthInputLayout"
+            app:layout_constraintTop_toBottomOf="@id/make_input_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <ImageView style="@style/AuthInputIcon" android:src="@drawable/ic_car_24" />
+            <EditText android:id="@+id/model_edit_text" style="@style/AuthEditText" android:hint="Model (e.g., Swift)" />
+        </LinearLayout>
+        <!-- Year Input -->
+        <LinearLayout
+            android:id="@+id/year_input_layout"
+            style="@style/AuthInputLayout"
+            app:layout_constraintTop_toBottomOf="@id/model_input_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <ImageView style="@style/AuthInputIcon" android:src="@drawable/ic_calendar_24" />
+            <EditText android:id="@+id/year_edit_text" style="@style/AuthEditText" android:hint="Year" android:inputType="number"/>
+        </LinearLayout>
+        <!-- License Plate Input -->
+        <LinearLayout
+            android:id="@+id/license_input_layout"
+            style="@style/AuthInputLayout"
+            app:layout_constraintTop_toBottomOf="@id/year_input_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <ImageView style="@style/AuthInputIcon" android:src="@drawable/ic_card_24" />
+            <EditText android:id="@+id/license_edit_text" style="@style/AuthEditText" android:hint="License Plate" />
+        </LinearLayout>
+
+        <!-- Insurance Details Group -->
+        <TextView
+            android:id="@+id/insurance_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="Insurance Details"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Insurance Provider">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/provider_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Policy Number">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/policy_no_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </com.google.android.material.textfield.TextInputLayout>
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/license_input_layout" />
 
-        <!-- Emergency Contacts -->
+        <!-- Provider Input -->
+        <LinearLayout
+            android:id="@+id/provider_input_layout"
+            style="@style/AuthInputLayout"
+            app:layout_constraintTop_toBottomOf="@id/insurance_header"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <ImageView style="@style/AuthInputIcon" android:src="@drawable/ic_card_24" />
+            <EditText android:id="@+id/provider_edit_text" style="@style/AuthEditText" android:hint="Insurance Provider" />
+        </LinearLayout>
+        <!-- Policy No Input -->
+        <LinearLayout
+            android:id="@+id/policy_no_input_layout"
+            style="@style/AuthInputLayout"
+            app:layout_constraintTop_toBottomOf="@id/provider_input_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <ImageView style="@style/AuthInputIcon" android:src="@drawable/ic_card_24" />
+            <EditText android:id="@+id/policy_no_edit_text" style="@style/AuthEditText" android:hint="Policy Number" />
+        </LinearLayout>
+
+        <!-- Emergency Contacts Group -->
         <TextView
+            android:id="@+id/emergency_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="Emergency Contacts"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Contact 1 Name">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/contact1_name_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Contact 1 Phone">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/contact1_phone_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="phone"/>
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Contact 2 Name">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/contact2_name_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Contact 2 Phone">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/contact2_phone_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="phone"/>
-        </com.google.android.material.textfield.TextInputLayout>
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/policy_no_input_layout" />
+        <!-- Contact 1 Name -->
+        <LinearLayout
+            android:id="@+id/contact1_name_layout"
+            style="@style/AuthInputLayout"
+            app:layout_constraintTop_toBottomOf="@id/emergency_header"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <ImageView style="@style/AuthInputIcon" android:src="@drawable/ic_person_24" />
+            <EditText android:id="@+id/contact1_name_edit_text" style="@style/AuthEditText" android:hint="Contact 1 Name" />
+        </LinearLayout>
+        <!-- Contact 1 Phone -->
+        <LinearLayout
+            android:id="@+id/contact1_phone_layout"
+            style="@style/AuthInputLayout"
+            app:layout_constraintTop_toBottomOf="@id/contact1_name_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <ImageView style="@style/AuthInputIcon" android:src="@drawable/ic_contact_phone_24" />
+            <EditText android:id="@+id/contact1_phone_edit_text" style="@style/AuthEditText" android:hint="Contact 1 Phone" android:inputType="phone"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/contact2_name_layout"
+            style="@style/AuthInputLayout"
+            app:layout_constraintTop_toBottomOf="@id/contact1_phone_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <ImageView style="@style/AuthInputIcon" android:src="@drawable/ic_person_24" />
+            <EditText android:id="@+id/contact2_name_edit_text" style="@style/AuthEditText" android:hint="Contact 2 Name" />
+        </LinearLayout>
+        <!-- Contact 2 Phone -->
+        <LinearLayout
+            android:id="@+id/contact2_phone_layout"
+            style="@style/AuthInputLayout"
+            app:layout_constraintTop_toBottomOf="@id/contact2_name_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <ImageView style="@style/AuthInputIcon" android:src="@drawable/ic_contact_phone_24" />
+            <EditText android:id="@+id/contact2_phone_edit_text" style="@style/AuthEditText" android:hint="Contact 2 Phone" android:inputType="phone"/>
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/complete_button"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/login_button_background"
+            android:text="COMPLETE REGISTRATION"
+            android:textColor="#0D1B4C"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/contact1_phone_layout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent="0.8" />
 
         <ProgressBar
             android:id="@+id/progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"
-            android:visibility="gone" />
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/complete_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:padding="12dp"
-            android:text="Complete Registration" />
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

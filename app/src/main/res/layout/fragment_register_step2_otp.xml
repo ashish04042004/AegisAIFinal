@@ -1,52 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="24dp">
+    android:background="@drawable/gradient_background"
+    tools:context=".ui.auth.RegisterStep2OtpFragment">
+
+    <!-- The semi-transparent card -->
+    <View
+        android:id="@+id/glass_card"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/glass_card_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.85" />
 
     <TextView
+        android:id="@+id/title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="Verify Your Phone"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/glass_card"
+        app:layout_constraintStart_toStartOf="@id/glass_card"
+        app:layout_constraintTop_toTopOf="@id/glass_card" />
 
     <TextView
         android:id="@+id/otp_prompt_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Enter the OTP sent to your phone"
-        android:textAlignment="center"/>
+        android:gravity="center"
+        android:text="Enter the OTP sent to your number"
+        android:textColor="#D0FFFFFF"
+        app:layout_constraintEnd_toEndOf="@id/otp_input_layout"
+        app:layout_constraintStart_toStartOf="@id/otp_input_layout"
+        app:layout_constraintTop_toBottomOf="@id/title_text" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/otp_layout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:hint="OTP Code">
-        <com.google.android.material.textfield.TextInputEditText
+    <!-- OTP Input -->
+    <LinearLayout
+        android:id="@+id/otp_input_layout"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@drawable/input_background"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/glass_card"
+        app:layout_constraintEnd_toEndOf="@id/glass_card"
+        app:layout_constraintStart_toStartOf="@id/glass_card"
+        app:layout_constraintTop_toTopOf="@id/glass_card"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintWidth_percent="0.7">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:src="@drawable/ic_dialpad_24"
+            app:tint="@android:color/white" />
+
+        <EditText
             android:id="@+id/otp_edit_text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:hint="OTP Code"
             android:inputType="number"
-            android:maxLength="6"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:maxLength="6"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="#A0FFFFFF" />
+    </LinearLayout>
+
+    <!-- Verify Button -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/verify_button"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@drawable/login_button_background"
+        android:text="VERIFY"
+        android:textColor="#0D1B4C"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/glass_card"
+        app:layout_constraintEnd_toEndOf="@id/glass_card"
+        app:layout_constraintStart_toStartOf="@id/glass_card"
+        app:layout_constraintTop_toBottomOf="@id/glass_card"
+        app:layout_constraintWidth_percent="0.6" />
 
     <ProgressBar
         android:id="@+id/progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:visibility="gone" />
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/verify_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:padding="12dp"
-        android:text="Verify" />
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
