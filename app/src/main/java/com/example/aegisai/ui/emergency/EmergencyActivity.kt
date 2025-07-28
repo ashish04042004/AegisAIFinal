@@ -1,12 +1,12 @@
-package com.example.aegisai
+package com.example.aegisai.ui.emergency
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import android.os.Build
+import com.example.aegisai.R
 
-class ARDamageActivity : AppCompatActivity() {
+class EmergencyActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_ar) // Replace with a valid layout
+        setContentView(R.layout.activity_emergency)
     }
 }

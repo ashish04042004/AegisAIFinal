@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Post-Incident Guide"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="What would you like to do next?"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="?android:attr/listDivider"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/damage_assessment_button"
+        style="@style/EmergencyButton"
+        android:layout_width="match_parent"
+        android:text="Start Damage Assessment"
+        app:icon="@drawable/ic_camera_alt_24"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/view_report_button"
+        style="@style/EmergencyButton"
+        android:layout_width="match_parent"
+        android:layout_marginTop="12dp"
+        android:text="View Incident Report"
+        app:icon="@drawable/ic_history_24"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/call_insurer_button"
+        style="@style/EmergencyButton"
+        android:layout_width="match_parent"
+        android:layout_marginTop="12dp"
+        android:text="Call My Insurer"
+        app:icon="@drawable/ic_call_24"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/roadside_assistance_button"
+        style="@style/EmergencyButton"
+        android:layout_width="match_parent"
+        android:layout_marginTop="12dp"
+        android:text="Request Roadside Assistance"
+        app:icon="@drawable/ic_car_repair_24"/>
+</LinearLayout>

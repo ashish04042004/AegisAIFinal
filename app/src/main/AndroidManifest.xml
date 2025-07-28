@@ -10,10 +10,14 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <!-- AR FEATURES (Unchanged) -->
     <uses-feature android:name="android.hardware.camera.ar" android:required="true" />
     <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
 
     <!-- Make sure to add the AegisAiApplication class reference -->
     <application
@@ -74,6 +78,14 @@
             android:name=".ARDamageActivity"
             android:exported="false"
             android:theme="@style/Theme.AegisAI" />
+        <!-- The dedicated, fullscreen activity for the emergency flow -->
+        <activity
+            android:name=".ui.emergency.EmergencyActivity"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AegisAI.NoActionBar"
+            tools:ignore="LockedOrientationActivity" />
 
     </application>
 

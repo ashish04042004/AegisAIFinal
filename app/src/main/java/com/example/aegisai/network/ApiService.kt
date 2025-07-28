@@ -4,6 +4,7 @@ import com.example.aegisai.model.*
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
+import retrofit2.http.HTTP
 import retrofit2.http.POST
 import retrofit2.http.PUT
 
@@ -22,7 +23,7 @@ interface ApiService {
     @POST("emergency-contact/add")
     suspend fun addContact(@Body request: AddContactRequest): Response<GenericResponse>
 
-    @DELETE("emergency-contact/delete") // <-- CHANGED from @POST
+    @HTTP(method = "DELETE", path = "emergency-contact/delete", hasBody = true)
     suspend fun deleteContact(@Body request: DeleteContactRequest): Response<GenericResponse>
 
     @PUT("emergency-contact/update") // <-- CHANGED from @POST

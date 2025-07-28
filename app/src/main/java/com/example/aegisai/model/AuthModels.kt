@@ -54,3 +54,9 @@ data class UpdateContactRequest(
     val name: String? = null, // Optional
     val phone: String? = null  // Optional
 )
+// Add this to your models file
+data class SosAlertRequest(
+    val userId: String,
+    val gps: String,
+    val message: String
+)

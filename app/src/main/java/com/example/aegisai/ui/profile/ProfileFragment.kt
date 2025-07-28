@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -16,7 +17,7 @@ import com.example.aegisai.databinding.ListItemContactBinding
 import com.example.aegisai.model.EmergencyContact
 import com.example.aegisai.ui.auth.AuthActivity
 import com.google.android.material.button.MaterialButton
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class ProfileFragment : Fragment() {
@@ -36,15 +37,10 @@ class ProfileFragment : Fragment() {
         binding.profileNameText.text = "Name: ${viewModel.getUserName(requireContext())}"
         binding.profilePhoneText.text = "Phone: ${viewModel.getUserPhone(requireContext())}"
 
-        // Observe the list of contacts and update the UI whenever it changes
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.contacts.collect { contacts ->
-                displayEmergencyContacts(contacts)
-            }
-        }
-
-        // Load the initial data when the view is created
+        // Load initial data from SharedPreferences
         viewModel.loadInitialData(requireContext())
+
+        setupObservers()
 
         binding.logoutButton.setOnClickListener {
             val sharedPrefs = requireContext().getSharedPreferences("AegisAiPrefs", 0)
@@ -56,8 +52,27 @@ class ProfileFragment : Fragment() {
         }
     }
 
+    private fun setupObservers() {
+        // This observer automatically redraws the contacts list whenever it changes in the ViewModel
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.contacts.collectLatest { contacts ->
+                displayEmergencyContacts(contacts)
+            }
+        }
+
+        // This observer shows a Toast for any operation status message from the ViewModel
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.operationStatus.collectLatest { status ->
+                status?.let {
+                    Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+                    viewModel.clearOperationStatus() // Reset status after showing to prevent re-showing on config change
+                }
+            }
+        }
+    }
+
     private fun displayEmergencyContacts(contacts: List<EmergencyContact>) {
-        binding.contactsContainer.removeAllViews() // Clear old views to prevent duplicates
+        binding.contactsContainer.removeAllViews() // Clear old views
 
         if (contacts.isNotEmpty()) {
             contacts.forEach { contact ->
@@ -75,7 +90,7 @@ class ProfileFragment : Fragment() {
             }
         }
 
-        // Add an "Add New" button at the end of the list
+        // Add an "Add New" button at the end
         val addButton = MaterialButton(requireContext(), null, com.google.android.material.R.attr.materialButtonOutlinedStyle).apply {
             text = "Add New Contact"
             setIconResource(R.drawable.ic_add_24)
@@ -118,7 +133,7 @@ class ProfileFragment : Fragment() {
             .setTitle("Delete Contact")
             .setMessage("Are you sure you want to delete ${contact.name}?")
             .setPositiveButton("Delete") { _, _ ->
-                viewModel.deleteContact(requireContext(), contact.phone)
+                viewModel.deleteContact(requireContext(), contact)
             }
             .setNegativeButton("Cancel", null)
             .show()

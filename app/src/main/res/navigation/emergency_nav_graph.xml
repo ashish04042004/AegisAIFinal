@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/emergency_nav_graph"
+    app:startDestination="@id/countdownFragment">
+
+    <fragment
+        android:id="@+id/countdownFragment"
+        android:name="com.example.aegisai.ui.emergency.CountdownFragment"
+        android:label="Countdown"
+        tools:layout="@layout/fragment_countdown" >
+        <action
+            android:id="@+id/action_countdownFragment_to_alertsSentFragment"
+            app:destination="@id/alertsSentFragment"
+            app:popUpTo="@id/countdownFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/alertsSentFragment"
+        android:name="com.example.aegisai.ui.emergency.AlertsSentFragment"
+        android:label="Alerts Sent"
+        tools:layout="@layout/fragment_alerts_sent" >
+        <action
+            android:id="@+id/action_alertsSentFragment_to_postIncidentHubFragment"
+            app:destination="@id/postIncidentHubFragment"
+            app:popUpTo="@id/alertsSentFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/postIncidentHubFragment"
+        android:name="com.example.aegisai.ui.emergency.PostIncidentHubFragment"
+        android:label="Post-Incident Hub"
+        tools:layout="@layout/fragment_post_incident_hub" />
+</navigation>
