@@ -34,7 +34,8 @@ class LoginFragment : Fragment() {
         binding.loginButton.setOnClickListener {
             val phone = binding.phoneEditText.text.toString().trim()
             val password = binding.passwordEditText.text.toString().trim()
-            viewModel.login(LoginRequest(phone, password))
+            // Pass the context to the ViewModel
+            viewModel.login(requireContext(), LoginRequest(phone, password))
         }
 
         binding.signupText.setOnClickListener {
@@ -63,7 +64,6 @@ class LoginFragment : Fragment() {
             }
         }
     }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

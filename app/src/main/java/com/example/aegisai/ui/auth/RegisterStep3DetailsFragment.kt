@@ -20,14 +20,14 @@ class RegisterStep3DetailsFragment : Fragment() {
     private var _binding: FragmentRegisterStep3DetailsBinding? = null
     private val binding get() = _binding!!
     private val viewModel: AuthViewModel by activityViewModels()
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        _binding = FragmentRegisterStep3DetailsBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    private var userNameFromStep1 = "" // To hold the user's name
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // This is a simple way to get the name from step 1.
+        // A better long-term solution might involve passing it via NavArgs.
+        userNameFromStep1 = arguments?.getString("userName") ?: ""
 
         binding.completeButton.setOnClickListener {
             val request = CompleteRegistrationRequest(
@@ -48,7 +48,8 @@ class RegisterStep3DetailsFragment : Fragment() {
                     policyNo = binding.policyNoEditText.text.toString()
                 )
             )
-            viewModel.completeRegistration(request)
+            // Pass context and name to ViewModel
+            viewModel.completeRegistration(requireContext(), request, userNameFromStep1)
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -74,6 +75,10 @@ class RegisterStep3DetailsFragment : Fragment() {
         }
     }
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        _binding = FragmentRegisterStep3DetailsBinding.inflate(inflater, container, false)
+        return binding.root
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

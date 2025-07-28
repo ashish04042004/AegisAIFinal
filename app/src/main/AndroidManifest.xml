@@ -2,22 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- PERMISSIONS -->
+    <!-- PERMISSIONS (Unchanged) -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.CAMERA" />
-
-    <!-- REQUIRED LOCATION PERMISSIONS FOR THE SERVICE -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
-    <!-- AR FEATURES -->
+    <!-- AR FEATURES (Unchanged) -->
     <uses-feature android:name="android.hardware.camera.ar" android:required="true" />
     <uses-feature android:name="android.hardware.camera" android:required="false" />
 
+    <!-- Make sure to add the AegisAiApplication class reference -->
     <application
+        android:name=".AegisAiApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -27,7 +27,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
-        <!-- ARCore requirement -->
+        <!-- ARCore requirement (Unchanged) -->
         <meta-data
             android:name="com.google.ar.core"
             android:value="required"
@@ -40,26 +40,36 @@
             android:exported="false"
             android:foregroundServiceType="location" />
 
-        <!-- AUTH ACTIVITY (NEW LAUNCHER) -->
+        <!-- ================================================================== -->
+        <!--                      ACTIVITY DECLARATIONS (Updated)                 -->
+        <!-- ================================================================== -->
+
+        <!-- 1. SPLASH ACTIVITY (New LAUNCHER) -->
         <activity
-            android:name=".ui.auth.AuthActivity"
+            android:name=".SplashActivity"
             android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
+            android:theme="@style/Theme.AegisAI.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!-- MAIN ACTIVITY (No longer the launcher) -->
+        <!-- 2. AUTH ACTIVITY (No longer the launcher) -->
+        <activity
+            android:name=".ui.auth.AuthActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"/>
+
+        <!-- 3. MAIN ACTIVITY (Also not the launcher) -->
         <activity
             android:name=".MainActivity"
             android:exported="false"
             android:label="@string/app_name"
             android:theme="@style/Theme.AegisAI"/>
 
-        <!-- AR DAMAGE ACTIVITY (Unchanged) -->
+        <!-- 4. AR DAMAGE ACTIVITY (Unchanged) -->
         <activity
             android:name=".ARDamageActivity"
             android:exported="false"

@@ -44,7 +44,11 @@ class RegisterStep1Fragment : Fragment() {
                     is AuthState.Success -> {
                         if (state.navigateTo == "verify_otp") {
                             Toast.makeText(context, state.message ?: "OTP Sent!", Toast.LENGTH_SHORT).show()
-                            findNavController().navigate(R.id.action_registerStep1Fragment_to_registerStep2OtpFragment)
+                            // Pass the user's name to the next steps
+                            val bundle = Bundle().apply {
+                                putString("userName", binding.nameEditText.text.toString().trim())
+                            }
+                            findNavController().navigate(R.id.action_registerStep1Fragment_to_registerStep2OtpFragment, bundle)
                         }
                         viewModel.resetState()
                     }

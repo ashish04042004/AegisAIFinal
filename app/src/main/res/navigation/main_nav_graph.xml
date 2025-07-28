@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment android:id="@+id/homeFragment" android:name="com.example.aegisai.ui.home.HomeFragment" android:label="Home" tools:layout="@layout/fragment_home" />
+    <fragment android:id="@+id/historyFragment" android:name="com.example.aegisai.ui.history.HistoryFragment" android:label="History" tools:layout="@layout/fragment_placeholder" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.aegisai.ui.profile.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment android:id="@+id/helpFragment" android:name="com.example.aegisai.ui.help.HelpFragment" android:label="Help" tools:layout="@layout/fragment_placeholder" />
+</navigation>

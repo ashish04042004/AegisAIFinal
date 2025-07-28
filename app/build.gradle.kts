@@ -68,6 +68,8 @@ dependencies {
 // Retrofit & Gson (you should have these)
     implementation("com.squareup.retrofit2:retrofit:3.0.0")
     implementation("com.squareup.retrofit2:converter-gson:3.0.0")
+    implementation("com.google.code.gson:gson:2.9.0")
+// Or a more recent version
 // Coroutines (you should have these)
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
     implementation(libs.androidx.material3)
@@ -78,6 +80,9 @@ dependencies {
     implementation("io.github.sceneview:arsceneview:2.3.0")
     implementation("com.squareup.retrofit2:retrofit:3.0.0")
     implementation("com.squareup.retrofit2:converter-gson:3.0.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0") // Use a recent, stable version
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+
+
+
 
 }

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Profile"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+
+        <!-- Personal Details Card -->
+        <com.google.android.material.card.MaterialCardView style="@style/ProfileCard">
+            <LinearLayout style="@style/ProfileCardContent">
+                <TextView style="@style/ProfileCardTitle" android:text="Personal Details"/>
+                <TextView android:id="@+id/profile_name_text" style="@style/ProfileCardItem"/>
+                <TextView android:id="@+id/profile_phone_text" style="@style/ProfileCardItem"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Emergency Contacts Card -->
+        <com.google.android.material.card.MaterialCardView style="@style/ProfileCard">
+            <LinearLayout style="@style/ProfileCardContent">
+                <TextView style="@style/ProfileCardTitle" android:text="Emergency Contacts"/>
+
+                <!-- This is the container for dynamic contact views -->
+                <LinearLayout
+                    android:id="@+id/contacts_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- App Settings Card -->
+        <com.google.android.material.card.MaterialCardView style="@style/ProfileCard">
+            <LinearLayout style="@style/ProfileCardContent">
+                <TextView style="@style/ProfileCardTitle" android:text="App Settings"/>
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/smart_activation_switch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Smart Activation"
+                    android:checked="true"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="32dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/logout_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:backgroundTint="@color/md_theme_secondary"/>
+    </LinearLayout>
+</ScrollView>
