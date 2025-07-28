@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark Mode Palette -->
+    <color name="md_theme_primary">#AEC6FF</color> <!-- A lighter blue for dark mode text/accents -->
+    <color name="md_theme_onPrimary">#002E69</color>
+    <color name="md_theme_secondary">#E6A4B4</color> <!-- A lighter pink for accents -->
+    <color name="md_theme_background">#0D1B2A</color> <!-- A very dark blue for the base -->
+    <color name="md_theme_surface">#1B263B</color>
+    <color name="md_theme_onSurface">#E0E2EC</color>
+    <color name="md_theme_text_secondary">#B0C4DE</color>
+</resources>

@@ -143,7 +143,7 @@
         android:layout_height="50dp"
         android:background="@drawable/login_button_background"
         android:text="LOGIN"
-        android:textColor="#0D1B4C"
+        android:textColor="?attr/colorPrimary"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/glass_card"
